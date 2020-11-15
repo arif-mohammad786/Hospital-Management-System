@@ -1,0 +1,70 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block navigationbar %}
+{% include 'core/navigationbar.html' %}
+{% endblock navigationbar %}
+
+{% block content %}
+    
+    <div class="container-fluid">
+        <div class="row">
+            
+            {% include 'core/adminsidebar.html' %}
+            <div class="col-md-8 main " style="margin-top:100px;">
+                <h3 class="font-weight-bold text-center text-secondary">Hospital Management System</h3>
+                <h4 class="text-center " style="color:#05668d;">Available Doctors</h4>
+
+                <!--<div class="container">
+                    <div class="row">-->
+                    <div class="float-right">
+                        <a href="{% url 'adddoctor' %}"><i class="fas fa-plus-square fa-3x" style="color:#225472"></i></a>
+                    </div>
+                        <div class="col-md-8 offset-1">
+                            <table class="table" style="margin-top:60px;">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Specialisation</th>
+                                        <th>Doctor Name</th>
+                                        <th>Address</th>
+                                        <th>Fees</th>
+                                        <th>Phone Number</th>
+                                        <th>Email</th>
+                                        <th>Password</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for doctor in doctors %}
+                                    <tr>
+                                        <td>{{doctor.id}}</td>
+                                        <td>{{doctor.specialisation}}</td>
+                                        <td>{{doctor.dname}}</td>
+                                        <td>{{doctor.address}}</td>
+                                        <td>{{doctor.fees}}</td>
+                                        <td>{{doctor.pno}}</td>
+                                        <td>{{doctor.email}}</td>
+                                        <td>{{doctor.password}}</td>
+                                        <td>
+                                            <a href="{% url 'editdoctor' doctor.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="{% url 'deletedoctor' doctor.id%}" method="POST" class="d-inline">
+                                                {% csrf_token %}
+                                                <input type="submit" class="btn btn-danger btn-sm " value="Delete">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                   <!-- </div>
+                </div>    -->                
+
+            </div>
+        </div>
+    </div>
+
+   
+
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block navigationbar %}
+{% include 'core/navigationbar.html' %}
+{% endblock navigationbar %}
+
+{% block content %}
+    <div class="container ">
+        <!--<div class="row">-->
+            <div  style="margin-top:100px;">
+                <h3 class="font-weight-bold text-center text-secondary">Hospital Management System</h3>
+                <h4 class="text-center" style="color:#05668d;">Select Department</h4>
+            </div>
+        <!--</div>-->
+        <div class="row ">
+            <div class="col-sm-8 offset-2 border shadow " style="border-radius:30px;"> 
+                {% if messages %}
+                    {% for message in messages %}
+                    <h4 {% if message.tags %} class="alert alert-{[message.tags}} text-center"{% endif %}>{{message}}</h4>
+                    {% endfor %}
+                {% endif %}
+                <form action="" method="GET" novalidate class="p-5">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <h4 class="alert alert-danger">{{error}}</h4>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% for field in form %}
+                        <div class="form-group">
+                            <span class="font-italic ">{{field.label_tag}}</span>
+                            <span>{{field}}</span>
+                            <span style="list-style-type:None;color:red;">{{field.errors|striptags}}</span>
+                        </div>
+                    {% endfor %}
+
+                    <input type="submit" value="Submit" class="btn btn-primary my-3">
+                    <a href="{% url 'dashboard' %}" class="btn btn-danger">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    {% include 'core/footer.html' %}
+
+{% endblock content %}

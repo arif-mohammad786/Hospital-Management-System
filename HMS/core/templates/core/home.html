@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block navigationbar %}
+{% include 'core/navigationbar.html' %}
+{% endblock navigationbar %}
+
+{% block content %}
+    <div class="container-fluid jumbotron mainimage" style="background-image:url('../static/core/images/doctors.jpg')">
+    </div>
+    
+    <div class="container mb-5">
+        <h3 class="text-center font-weight-bold alert alert-secondary">HMS Qualities</h3>
+        <div class="row">
+            <div class="card col-md-3 offset-1 mb-3" style="width: 18rem;">
+                <img src="../static/core/images/doctor.jpg" class="card-img-top thumbnail mt-3 rounded-circle" alt="Doctor" width="200px" height="200px">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Specialist Doctors</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <div class="card col-md-3 offset-1 mb-3" style="width: 18rem;">
+                <img src="../static/core/images/nurse.jpg" class="card-img-top thumbnail mt-3 rounded-circle" alt="Nurse" width="200px" height="200px">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Caring Nurses</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <div class="card col-md-3 offset-1 mb-3" style="width: 18rem;">
+                <img src="../static/core/images/ambulance.jpg" class="card-img-top thumbnail mt-3 rounded-circle" alt="Required Facilities" width="200px" height="200px">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Other Facilities</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% include 'core/footer.html' %}
+
+{% endblock content %}
+
+
+
+<!--
+  admin username=>root
+  password=adminpassword
+-->

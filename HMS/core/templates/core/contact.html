@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}
+Contact Us
+{% endblock title %}
+
+{% block navigationbar %}
+{% include 'core/navigationbar.html' %}
+{% endblock navigationbar %}
+
+{% block content %}
+    <div class="container ">
+        <!--<div class="row">-->
+            <div  style="margin-top:100px;">
+                <h3 class="font-weight-bold text-center text-secondary">Hospital Management System</h3>
+                <h4 class="text-center" style="color:#05668d;">About Us</h4>
+            </div>
+        <!--</div>-->
+        <div class="row ">
+            <div class="col-sm-2 offset-1">
+                <h4 class="text-secondary">HMS Address</h4>
+                <p>512/abc gali 2 new colony Daneeshnagar<br> new HP petrolepump, Lucknow</p>
+            </div>
+            <div class="col-sm-8 offset-1 border shadow " style="border-radius:30px;"> 
+                <form action="" method="POST" novalidate class="px-5 py-2">
+                {% if messages %}
+                    {% for message in messages %}
+                        <h4 {% if message.tags %} class="alert alert-{{message.tags}}"{% endif %}>{{message}}</h4>
+                    {% endfor %}
+                {% endif %}
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <h4 class="alert alert-danger">{{error}}</h4>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% for field in form %}
+                        <div class="form-group">
+                            <span class="font-italic ">{{field.label_tag}}</span>
+                            <span>{{field}}</span>
+                            <span style="list-style-type:None;color:red;">{{field.errors|striptags}}</span>
+                        </div>
+                    {% endfor %}
+
+                    <input type="submit" value="Send" class="btn btn-primary">
+                    <a href="{% url 'dashboard' %}" class="btn btn-danger">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock content %}

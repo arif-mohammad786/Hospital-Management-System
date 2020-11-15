@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block navigationbar %}
+{% include 'core/navigationbar.html' %}
+{% endblock navigationbar %}
+
+{% block content %}
+    
+    <div class="container-fluid">
+        <div class="row">
+            
+            {% include 'core/adminsidebar.html' %}
+            <div class="col-md-8 main " style="margin-top:100px;">
+                <h3 class="font-weight-bold text-center text-secondary">Hospital Management System</h3>
+                <h4 class="text-center " style="color:#05668d;">Doctors Specialisations</h4>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 offset-2">
+                            <div class="float-right">
+                                <a href="{% url 'addspecialisation' %}"><i class="fas fa-plus-square fa-3x" style="color:#225472"></i></a>
+                            </div>
+                            <table class="table  mt-5">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Specialisation</th>
+                                        <th>Date of Creation</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for specialisation in specialisations %}
+                                    <tr>
+                                        <td>{{specialisation.id}}</td>
+                                        <td>{{specialisation.specialisation}}</td>
+                                        <td>{{specialisation.date}}</td>
+                                        <td>
+                                            <a href="{% url 'editspecialisation' specialisation.id %}" class="btn btn-warning btn-sm ">Edit</a>
+                                            <form action="{% url 'deletespecialisation' specialisation.id %}" method="POST" class="d-inline">
+                                                {% csrf_token %}
+                                                <input type="submit" class="btn btn-danger btn-sm " value="Delete">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>                    
+
+            </div>
+        </div>
+    </div>
+
+   
+
+{% endblock content %}

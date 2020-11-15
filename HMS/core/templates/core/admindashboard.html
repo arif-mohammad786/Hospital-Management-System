@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block navigationbar %}
+{% include 'core/navigationbar.html' %}
+{% endblock navigationbar %}
+
+{% block content %}
+    
+    <div class="container-fluid">
+        <div class="row">
+            
+            {% include 'core/adminsidebar.html' %}
+            <div class="col-md-8 main " style="margin-top:100px;">
+                <h3 class="font-weight-bold text-center text-secondary">Hospital Management System</h3>
+                <h4 class="text-center " style="color:#05668d;">Admin Dashboard</h4>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4 offset-2 border border-info text-center" style="margin-top:100px;">
+                                <a href="{% url 'profile' %}"><h4 class="mt-3">Admin Profile</h4>
+                                <i class="fas fa-user-alt fa-4x my-3" style="color:#00a896;"></i></a>
+                            </div>
+                            <div class="col-sm-4 offset-2 border border-info text-center" style="margin-top:100px;">
+                                <a href="{% url 'availabledoctors' %}"><h4 class="mt-3">Manage Doctors</h4>
+                                <i class="fas fa-user-md fa-4x my-3" style="color:#00a896;"></i></a>
+                            </div>
+                            <div class="col-sm-4 offset-2 border border-info text-center" style="margin-top:100px;">
+                                <a href="{% url 'availablepatients' %}"><h4 class="mt-3">Manage Patients</h4>
+                                <i class="fas fa-procedures fa-4x my-3" style="color:#00a896;"></i></a>
+                            </div>
+                            <div class="col-sm-4 offset-2 border border-info text-center" style="margin-top:100px;">
+                                <a href="{% url 'todayappointment' %}"><h4 class="mt-3">Appointments</h4>
+                                <i class="fas fa-calendar-check fa-4x my-3" style="color:#00a896;"></i></a>
+                            </div>
+                            <!--<div class="col-sm-4 offset-2 border border-info text-center" style="margin-top:100px;">
+                                <a href="#"><h4 class="mt-3">New Quaries</h4>
+                                <i class="far fa-copy fa-4x my-3" style="color:#00a896;"></i></a>
+                            </div>-->
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:150px;">
+    {% include 'core/footer.html' %}
+    </div>
+
+{% endblock content %}

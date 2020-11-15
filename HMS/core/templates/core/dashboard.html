@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block navigationbar %}
+{% include 'core/navigationbar.html' %}
+{% endblock navigationbar %}
+
+{% block content %}
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3  fixed border-right" style="list-style-type:none; background-color:#f0f3bd; margin-top:70px;" height="500px">
+                <ul>
+                    <h5 class="mt-3"><a href="{% url 'profile' %}" class="font-weight-bold" style="color:black;"><i class="fas fa-user-alt mr-2" style="color:#00a896;"></i>My Profile</a></h5>
+                    <h5 class="mt-3"><a href="{% url 'selectdepartment' %}" class="font-weight-bold" style="color:black;"><i class="far fa-calendar-check mr-2" style="color:#00a896;"></i>Book Appointment</a></h5>
+                    <h5 class="mt-3"><a href="{% url 'userappointmenthistory' %}" class="font-weight-bold" style="color:black;"><i class="fas fa-history mr-2" style="color:#00a896;"></i>Appointment History</a></h5>
+                    <h5 class="mt-3"><a href="{% url 'changepass' %}" class="font-weight-bold" style="color:black;"><i class="fas fa-key mr-2" style="color:#00a896;"></i>Change Password</a></h5>
+                    <h5 class="mt-3"><a href="{% url 'logout' %}" class="font-weight-bold" style="color:black;"><i class="fas fa-sign-out-alt mr-2" style="color:#00a896;"></i>Logout</a></h5>  
+                </ul>
+            </div>
+            <div class="col-md-8 " style="margin-top:100px;">
+                <h3 class="font-weight-bold text-center text-secondary">Hospital Management System</h3>
+                <h4 class="text-center " style="color:#05668d;">Dashboard</h4>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-4 offset-1 border border-info text-center" style="margin-top:100px;">
+                            <a href="{% url 'profile' %}"><h4 class="mt-3">My Profile</h4>
+                            <i class="fas fa-user-alt fa-4x my-3" style="color:#00a896;"></i></a>
+                        </div>
+                        <div class="col-sm-4 offset-1 border border-info text-center" style="margin-top:100px;">
+                            <a href="{% url 'selectdepartment' %}"><h4 class="mt-3">Book Appointment</h4>
+                            <i class="far fa-calendar-check fa-4x my-3" style="color:#00a896;"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:150px;">
+    {% include 'core/footer.html' %}
+    </div>
+
+{% endblock content %}

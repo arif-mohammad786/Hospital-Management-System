@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block navigationbar %}
+{% include 'core/navigationbar.html' %}
+{% endblock navigationbar %}
+
+{% block content %}
+    
+    <div class="container-fluid">
+        <div class="row">
+            
+            {% include 'core/adminsidebar.html' %}
+            <div class="col-md-8 main " style="margin-top:100px;">
+                <h3 class="font-weight-bold text-center text-secondary">Hospital Management System</h3>
+                <h4 class="text-center " style="color:#05668d;">Edit Doctors Specialisations</h4>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 offset-2">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <h4 class="alert alert-success">{{message}}</h4>
+                                {% endfor %}
+                            {% endif %}
+                           <form action="" method="POST" novalidate>
+                            {% csrf_token %}
+                                {% if form.non_field_errors %}
+                                    {% for error in form.non_field_errors %}
+                                        <h4 class="alert alert-danger">{{error}}</h4>
+                                    {% endfor %}
+                                {% endif %}
+                                {% for field in form %}
+                                <div class="form-group">
+                                    {{field.label_tag}}{{field}}<span style="color:red;">{{field.errors|striptags}}</span>
+                                </div>
+                                {% endfor %}
+                                <input type="submit" value="Update" class="btn btn-success mt-3">
+                                <a href="{% url 'dashboard' %}" class="btn btn-danger mt-3">Cancel</a>
+                           </form>
+                        </div>
+                    </div>
+                </div>                    
+
+            </div>
+        </div>
+    </div>
+
+   
+
+{% endblock content %}
